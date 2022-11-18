@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RequestTourism;
 use App\Models\Village;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\RequestTourism;
 
 class RequestTourismController extends Controller
 {
@@ -42,14 +42,14 @@ class RequestTourismController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'village_id' => 'required',
-            'user_id' => 'required',
-            'name' => 'required|unique:tourisms|max:255',
+            'name' => 'required|unique:request_tourisms|max:255',
             'daysOpen' => 'required|max:255',
             'hoursOpen' => 'required|max:255',
             'fee' => 'required',
@@ -66,13 +66,13 @@ class RequestTourismController extends Controller
             $validatedData['type'] = "Ubah";
         }
 
+        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['slug'] = Str::replace(' ', '-', $validatedData['name']);
         $validatedData['image'] = $request->file('image')->store('req-tourism-img');
 
-        dd($validatedData);
-        // RequestTourism::create($validatedData);
+        RequestTourism::create($validatedData);
 
-        // return redirect('/')->with('success', 'Permintaan Berhasil Dikirim');
+        return back()->with('success', 'Permintaan Berhasil Dikirim');
     }
 
     /**
@@ -100,6 +100,7 @@ class RequestTourismController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\RequestTourism  $requestTourism
      * @return \Illuminate\Http\Response
      */

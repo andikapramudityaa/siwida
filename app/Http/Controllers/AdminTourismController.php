@@ -128,6 +128,8 @@ class AdminTourismController extends Controller
      */
     public function destroy(Tourism $tourism)
     {
+        Storage::delete($tourism->image);
+
         Tourism::destroy($tourism->id);
 
         return redirect('/admin/tourisms')->with('success', 'Peta Wisata berhasil dihapus');

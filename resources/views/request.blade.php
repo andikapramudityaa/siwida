@@ -23,8 +23,6 @@
             <div class="container mb-3 card bg-white shadow-sm">
                 <form action="/requests" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-
                     <div class="col-sm-6">
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
                             autofocus required>
@@ -78,7 +76,7 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
+                        <select class="form-select mb-3" name="type" id="type" aria-label="Jenis Permintaan"
                             autofocus required>
                             <option value="1">Tambah Wisata</option>
                             <option value="2">Ubah Wisata</option>
@@ -94,8 +92,8 @@
 
                     <div class="mb-3">
                         <input type="number" step="any" class="form-control @error('lng') is-invalid @enderror"
-                            name="lng" id="lng" placeholder="Koordinat (Longitude)"
-                            value="{{ old('lng') }}" required>
+                            name="lng" id="lng" placeholder="Koordinat (Longitude)" value="{{ old('lng') }}"
+                            required>
                         <x-form-error-message id="lng" />
                     </div>
 
