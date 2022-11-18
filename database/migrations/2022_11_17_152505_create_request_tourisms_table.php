@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tourisms', function (Blueprint $table) {
+        Schema::create('request_tourisms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('village_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('image');
             $table->string('daysOpen');
             $table->string('hoursOpen');
             $table->string('price');
-            $table->double('lat');
-            $table->double('lng');
             $table->timestamps();
         });
     }
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tourisms');
+        Schema::dropIfExists('request_tourisms');
     }
 };

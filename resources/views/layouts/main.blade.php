@@ -34,10 +34,28 @@
                 <img src="{{ asset('images/logo-kabupaten.png') }}" width="28" height="30"
                     class="d-inline-block align-text-top">
             </a>
+
+            @guest
+                <a href="/login" class="text-reset text-decoration-none">
+                    <i class="fa-solid fa-right-to-bracket {{ $pageTitle === 'Masuk' ? 'text-success' : '' }}"></i>
+                </a>
+            @endguest
+
+            @auth
+                <form action="/logout" method="POST" class="mt-2 mb-2">
+                    @csrf
+                    <button class="border-0 btn nav-link" type="submit"
+                        onclick="return confirm('Apa anda yakin untuk Logout?')">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                </form>
+            @endauth
         </div>
     </nav>
 
-    @yield('body')
+    <div class="container">
+        @yield('body')
+    </div>
 </body>
 
 </html>

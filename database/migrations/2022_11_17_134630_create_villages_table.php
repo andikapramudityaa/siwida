@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('villages', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 12);
+            $table->string('name', 12)->unique();
             $table->string('slug', 14)->unique();
             $table->timestamps();
         });

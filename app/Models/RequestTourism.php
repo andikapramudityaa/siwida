@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Village extends Model
+class RequestTourism extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function tourism()
+    public function user()
     {
-        return $this->hasMany(Tourism::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function requestTourism()
+    public function village()
     {
-        return $this->hasMany(RequestTourism::class);
+        return $this->belongsTo(Village::class);
     }
 
     public function getRouteKeyName()
