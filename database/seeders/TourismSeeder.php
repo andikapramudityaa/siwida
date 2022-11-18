@@ -22,7 +22,8 @@ class TourismSeeder extends Seeder
             'image' => '',
             'daysOpen' => 'Senin s/d Minggu',
             'hoursOpen' => '08.00 s/d 15.00',
-            'price' => '15.000',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
             'lat' => 1233123,
             'lng' => 32133.1
         ]);
@@ -34,7 +35,8 @@ class TourismSeeder extends Seeder
             'image' => '',
             'daysOpen' => 'Senin s/d Minggu',
             'hoursOpen' => '08.00 s/d 15.00',
-            'price' => '15.000',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
             'lat' => 1233123,
             'lng' => 32133.1
         ]);
@@ -46,7 +48,8 @@ class TourismSeeder extends Seeder
             'image' => '',
             'daysOpen' => 'Senin s/d Minggu',
             'hoursOpen' => '08.00 s/d 15.00',
-            'price' => '15.000',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
             'lat' => 1233123,
             'lng' => 32133.1
         ]);

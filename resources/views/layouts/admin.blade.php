@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Admin - {{ $pageTitle }} </title>
+
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+    </script>
+
+    {{-- Favicon --}}
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+
+    {{-- Font Awesome Kit --}}
+    <script src="https://kit.fontawesome.com/cf6a86679c.js" crossorigin="anonymous"></script>
+
+    {{-- Separated CSS --}}
+    @yield('pageCSS')
+</head>
+
+<body>
+    <nav class="navbar bg-white navbar-expand-md shadow-sm mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="/admin/tourisms">
+                <img src="{{ asset('images/logo-kabupaten.png') }}" width="28" height="30"
+                    class="d-inline-block align-text-top">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-2">
+                        <a class="nav-link {{ $pageTitle === 'Wisata' ? 'active' : '' }}" href="/admin/tourisms">
+                            Wisata
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link {{ $pageTitle === 'Akun' ? 'active' : '' }}" href="/admin/users">
+                            Akun
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Website</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <form action="/logout" method="POST" class="mt-2 mb-2">
+                            @csrf
+                            <button class="border-0 btn nav-link" type="submit"
+                                onclick="return confirm('Apa anda yakin untuk Logout?')">
+                                <i class="fa-solid fa-user"></i>
+                            </button>
+                        </form>
+                    </li> --}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        @yield('body')
+    </div>
+</body>
+
+</html>

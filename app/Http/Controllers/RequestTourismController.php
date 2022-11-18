@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\RequestTourism;
-use App\Http\Requests\StoreRequestTourismRequest;
-use App\Http\Requests\UpdateRequestTourismRequest;
+use App\Models\Village;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class RequestTourismController extends Controller
 {
@@ -15,7 +16,10 @@ class RequestTourismController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tourism.request', [
+            'pageTitle' => 'Permintaan Wisata',
+            'requestTourisms' => RequestTourism::all()
+        ]);
     }
 
     /**
@@ -30,19 +34,45 @@ class RequestTourismController extends Controller
         }
 
         return view('request', [
-            'pageTitle' => 'Permintaan Wisata'
+            'pageTitle' => 'Permintaan Wisata',
+            'villages' => Village::all()
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRequestTourismRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequestTourismRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'village_id' => 'required',
+            'user_id' => 'required',
+            'name' => 'required|unique:tourisms|max:255',
+            'daysOpen' => 'required|max:255',
+            'hoursOpen' => 'required|max:255',
+            'fee' => 'required',
+            'facility' => 'required|max:255',
+            'lat' => 'required',
+            'lng' => 'required',
+            'image' => 'image|file|max:1024',
+            'type' => 'required'
+        ]);
+
+        if ($request->type == 1) {
+            $validatedData['type'] = "Tambah";
+        } else {
+            $validatedData['type'] = "Ubah";
+        }
+
+        $validatedData['slug'] = Str::replace(' ', '-', $validatedData['name']);
+        $validatedData['image'] = $request->file('image')->store('req-tourism-img');
+
+        dd($validatedData);
+        // RequestTourism::create($validatedData);
+
+        // return redirect('/')->with('success', 'Permintaan Berhasil Dikirim');
     }
 
     /**
@@ -70,11 +100,10 @@ class RequestTourismController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateRequestTourismRequest  $request
      * @param  \App\Models\RequestTourism  $requestTourism
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequestTourismRequest $request, RequestTourism $requestTourism)
+    public function update(Request $request, RequestTourism $requestTourism)
     {
         //
     }

@@ -23,6 +23,11 @@
         {{ $village->name }} <br>
         {{ $tourism->daysOpen }} <br>
         {{ $tourism->hoursOpen }} <br>
-        {{ $tourism->price }} <br>
+        {{ $tourism->fee }} <br>
+
+        <div class="mt-3 mb-3">
+            <img src="{{ asset('storage/' . $tourism->image) }}" class="img-fluid rounded card-img-top"
+                alt="Gambar Artikel">
+        </div>
     </h5>
 @endsection

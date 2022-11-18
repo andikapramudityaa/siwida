@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +39,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'username' => 'required|alpha_dash|unique:users,username|min:3|max:30',
+            'name' => 'required|min:3|max:25',
+            'password' => 'required|min:6|max:30'
+        ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['role'] = 'user';
+        $validatedData['remember_token'] = Str::random(10);
+
+        if ($request->phoneNumber) {
+            $validatedData['phoneNumber'] = $request->phoneNumber;
+        }
+
+        User::create($validatedData);
+
+        return redirect('/login')->with('success', 'Akun berhasil didaftarkan');
     }
 
     /**

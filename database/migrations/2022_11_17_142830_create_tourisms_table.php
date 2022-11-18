@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('daysOpen');
             $table->string('hoursOpen');
-            $table->string('price');
+            $table->string('fee');
+            $table->string('facility');
             $table->double('lat');
             $table->double('lng');
             $table->timestamps();

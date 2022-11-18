@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminTourismController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RequestTourismController;
@@ -21,10 +22,10 @@ use App\Models\RequestTourism;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/villages/{village}', [VillageController::class, 'getVillage']);
-Route::get('/tourisms/{tourism}', [TourismController::class, 'getTourism']);
+Route::get('villages/{village}', [VillageController::class, 'getVillage']);
+Route::get('tourisms/{tourism}', [TourismController::class, 'getTourism']);
 
-Route::resource('/req', RequestTourismController::class);
+Route::resource('requests', RequestTourismController::class)->only(['create', 'store']);
 
 Route::controller(SessionController::class)->group(function () {
     Route::middleware('guest')->group(function () {
@@ -36,4 +37,8 @@ Route::controller(SessionController::class)->group(function () {
     });
 });
 
-Route::resource('/users', UserController::class);
+Route::resource('users', UserController::class);
+
+Route::resource('admin/tourisms', AdminTourismController::class)->except('show')->middleware('auth');
+
+Route::resource('admin/requests', RequestTourismController::class)->except(['create', 'store'])->middleware('auth');

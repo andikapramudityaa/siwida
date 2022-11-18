@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="d-flex justify-content-center">
-        <div class="col-lg-6 mb-4">
+        <div class="col-sm-6 mb-3">
             <form action="/articles">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari Wisata.." name="search"
@@ -15,10 +15,10 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-end mb-3">
+    <div class="d-flex justify-content-end">
         <div class="btn-group">
-            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-location me-2"></i>
+            <button type="button" class="btn text-success border-0 dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 Pilih Desa
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -35,8 +35,10 @@
     </div>
 
     <div class="mb-3">
-        <a href="/req/create" class="text-decoration-none text-success">
-            <i class="fa-solid fa-circle-plus me-2"></i>
+        <a href="/requests/create" class="text-decoration-none text-success">
+            <small>
+                <i class="fa-solid fa-circle-plus me-2"></i>
+            </small>
             Permintaan Wisata
         </a>
     </div>
@@ -45,17 +47,22 @@
         <div class="card mb-3 border-0">
             <div class="row">
                 <div class="col-lg-2 mb-2">
-                    <img src="{{ asset('images/example.jpg') }}" class="img-fluid rounded-3 border-0" alt="img-post">
+                    <img src="{{ asset('images/example.jpg') }}" class="img-fluid rounded-3 border-0 overflow-hidden"
+                        alt="img-post">
                 </div>
                 <div class="col">
                     <div class="card-body py-0 px-1">
                         <h5 class="card-title">
                             {{ $tourism->name }}
                         </h5>
-                        <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
-                            Detail Wisata
-                            <i class="fa-solid fa-angles-right"></i>
-                        </a>
+                        <small>
+                            <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
+                                Detail Wisata
+                                <small>
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </small>
+                            </a>
+                        </small>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('image');
             $table->string('daysOpen');
             $table->string('hoursOpen');
-            $table->string('price');
+            $table->string('fee');
+            $table->text('facility');
+            $table->string('type');
             $table->timestamps();
         });
     }

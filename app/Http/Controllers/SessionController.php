@@ -25,9 +25,9 @@ class SessionController extends Controller
             $request->session()->regenerate();
 
             //TODO ADMIN REDIRECT TO ADMIN MENU
-            // if (auth()->user->role == 'admin') {
-            //     return redirect()->intended('/req');
-            // }
+            if (auth()->user()->role == 'admin') {
+                return redirect()->intended('/admin/tourisms');
+            }
 
             return redirect()->intended('/');
         }

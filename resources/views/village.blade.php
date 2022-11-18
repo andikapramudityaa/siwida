@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="d-flex justify-content-center">
-        <div class="col-lg-6 mb-4">
+        <div class="col-sm-6 mb-4">
             <form action="/articles">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari Wisata.." name="search"
@@ -34,10 +34,14 @@
                             <h5 class="card-title">
                                 {{ $tourism->name }}
                             </h5>
-                            <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
-                                Detail Wisata
-                                <i class="fa-solid fa-angles-right"></i>
-                            </a>
+                            <small>
+                                <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
+                                    Detail Wisata
+                                    <small>
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </small>
+                                </a>
+                            </small>
                         </div>
                     </div>
                 </div>

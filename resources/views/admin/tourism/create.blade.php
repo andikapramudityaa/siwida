@@ -1,30 +1,19 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('body')
     <div class="d-flex justify-content-center">
         <div class="col-lg-6">
-            <h5>
+            <h5 class="mb-3">
                 <small>
                     <a href="{{ url()->previous() }}" class="text-decoration-none">
                         <i class="fa-solid fa-circle-chevron-left text-success"></i>
                     </a>
                 </small>
-                &nbsp; Permintaan Wisata
+                &nbsp; Tambah Wisata
             </h5>
-
-            <small class="text-danger">
-                *Permintaan yang tidak sesuai tidak akan diterima.
-                &nbsp;
-                <a href="" class="text-success text-decoration-none">
-                    <i class="fa-solid fa-circle-question"></i>
-                </a>
-            </small>
-
             <div class="container mb-3 card bg-white shadow-sm">
-                <form action="/requests" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
+                <form action="/admin/tourisms" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-
                     <div class="col-sm-6">
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
                             autofocus required>
@@ -77,14 +66,6 @@
                         <x-form-error-message id="facility" />
                     </div>
 
-                    <div class="col-sm-6">
-                        <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
-                            autofocus required>
-                            <option value="1">Tambah Wisata</option>
-                            <option value="2">Ubah Wisata</option>
-                        </select>
-                    </div>
-
                     <div class="mb-3">
                         <input type="number" step="any" class="form-control @error('lat') is-invalid @enderror"
                             name="lat" id="lat" placeholder="Koordinat (Latitude)" value="{{ old('lat') }}"
@@ -94,8 +75,8 @@
 
                     <div class="mb-3">
                         <input type="number" step="any" class="form-control @error('lng') is-invalid @enderror"
-                            name="lng" id="lng" placeholder="Koordinat (Longitude)"
-                            value="{{ old('lng') }}" required>
+                            name="lng" id="lng" placeholder="Koordinat (Longitude)" value="{{ old('lng') }}"
+                            required>
                         <x-form-error-message id="lng" />
                     </div>
 

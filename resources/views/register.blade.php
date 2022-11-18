@@ -16,16 +16,16 @@
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" name="fullName" class="form-control @error('fullName') is-invalid @enderror"
-                            id="fullName" maxlength="25" placeholder="Nama Lengkap" required value="{{ old('fullName') }}">
-                        <x-form-error-message id="fullName" />
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            id="name" maxlength="25" placeholder="Nama Lengkap" required value="{{ old('name') }}">
+                        <x-form-error-message id="name" />
                     </div>
 
                     <div class="mb-3">
-                        <input type="tel" pattern="^08[1-9][0-9]{7,10}$" minlength="10" maxlength="13" name="phoneNum"
-                            class="form-control @error('phoneNum') is-invalid @enderror" id="phoneNum"
-                            placeholder="No Telp (Opsional)" value="{{ old('phoneNum') }}">
-                        <x-form-error-message id="phoneNum" />
+                        <input type="tel" pattern="^08[1-9][0-9]{7,10}$" minlength="10" maxlength="13"
+                            name="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror"
+                            id="phoneNumber" placeholder="Nomor Telepon" value="{{ old('phoneNumber') }}">
+                        <x-form-error-message id="phoneNumber" />
                     </div>
 
                     <div class="mb-3">
