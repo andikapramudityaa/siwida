@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('daysOpen');
             $table->string('hoursOpen');
             $table->string('fee');
-            $table->text('facility');
+            $table->string('facility');
             $table->string('type');
             $table->timestamps();
         });

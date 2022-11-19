@@ -13,7 +13,7 @@ class HomeController extends Controller
         return view('home', [
             'pageTitle' => 'Beranda',
             'villages' => Village::all(),
-            'tourisms' => Tourism::all()
+            'tourisms' => Tourism::latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 }

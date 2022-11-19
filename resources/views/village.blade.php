@@ -3,10 +3,10 @@
 @section('body')
     <div class="d-flex justify-content-center">
         <div class="col-sm-6 mb-4">
-            <form action="/articles">
+            <form action="/villages/{{ $village->slug }}">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari Wisata.." name="search"
-                        value="{{ request('search') }}">
+                    <input type="text" class="form-control" placeholder="Cari Wisata Desa {{ $village->name }}..."
+                        name="search" value="{{ request('search') }}">
                     <button class="btn btn-success" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -16,9 +16,11 @@
     </div>
 
     <h5 class="mb-3">
-        <a href="/" class="text-decoration-none text-success">
-            <i class="fa-solid fa-circle-chevron-left me-2"></i>
-        </a>
+        <small>
+            <a href="/" class="text-decoration-none text-success">
+                <i class="fa-solid fa-circle-chevron-left me-2"></i>
+            </a>
+        </small>
         Desa {{ $village->name }}
     </h5>
 
@@ -47,6 +49,10 @@
                 </div>
             </div>
         @endforeach
+
+        <div class="d-flex justify-content-center">
+            {{ $tourisms->links() }}
+        </div>
     @else
         <h5>Tidak Ada Data</h5>
     @endif

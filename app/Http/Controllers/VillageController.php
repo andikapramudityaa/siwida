@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tourism;
 use App\Models\Village;
-use Illuminate\Http\Request;
 
 class VillageController extends Controller
 {
@@ -12,7 +12,7 @@ class VillageController extends Controller
         return view('village', [
             'pageTitle' => 'Desa',
             'village' => $village,
-            'tourisms' => $village->tourism
+            'tourisms' => Tourism::where('village_id', $village->id)->latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 }

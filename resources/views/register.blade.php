@@ -24,7 +24,7 @@
                     <div class="mb-3">
                         <input type="tel" pattern="^08[1-9][0-9]{7,10}$" minlength="10" maxlength="13"
                             name="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror"
-                            id="phoneNumber" placeholder="Nomor Telepon" value="{{ old('phoneNumber') }}">
+                            id="phoneNumber" placeholder="Nomor Telepon" value="{{ old('phoneNumber') }}" required>
                         <x-form-error-message id="phoneNumber" />
                     </div>
 

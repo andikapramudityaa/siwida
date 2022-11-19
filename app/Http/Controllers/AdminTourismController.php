@@ -21,7 +21,7 @@ class AdminTourismController extends Controller
     {
         return view('admin.tourism', [
             'pageTitle' => 'Wisata',
-            'tourisms' => Tourism::all(),
+            'tourisms' => Tourism::latest()->filter(request(['search']))->paginate(5)->withQueryString(),
             'requestTourisms' => RequestTourism::all()
         ]);
     }
@@ -132,6 +132,6 @@ class AdminTourismController extends Controller
 
         Tourism::destroy($tourism->id);
 
-        return redirect('/admin/tourisms')->with('success', 'Peta Wisata berhasil dihapus');
+        return redirect('/admin/tourisms')->with('success', 'Wisata Berhasil Dihapus');
     }
 }

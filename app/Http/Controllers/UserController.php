@@ -16,7 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user', [
+            'pageTitle' => 'Akun',
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -59,17 +62,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\User  $user
@@ -77,7 +69,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.account.edit', [
+            'pageTitle' => 'Perbarui Akun',
+            'user' => $user
+        ]);
     }
 
     /**
@@ -89,7 +84,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|min:3|max:25',
+            'phoneNumber' => 'required'
+        ]);
+
+        User::where('id', $user->id)->update($validatedData);
+
+        return redirect('/admin/users/')->with('success', 'Akun Berhasil Diperbarui');
     }
 
     /**
@@ -100,6 +102,15 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $currentUser = auth()->user()->username;
+
+        User::destroy($user->id);
+
+        // Check for self-delete account
+        if ($currentUser === $user->username) {
+            return redirect('/');
+        }
+
+        return redirect('/admin/users')->with('success', 'Akun Berhasil Dihapus');
     }
 }

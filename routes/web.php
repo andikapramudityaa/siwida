@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('villages/{village}', [VillageController::class, 'getVillage']);
 Route::get('tourisms/{tourism}', [TourismController::class, 'getTourism']);
 
-Route::resource('requests', RequestTourismController::class)->only(['create', 'store']);
+Route::resource('requestTourisms', RequestTourismController::class)->only(['create', 'store']);
 
 Route::controller(SessionController::class)->group(function () {
     Route::middleware('guest')->group(function () {
@@ -37,8 +37,10 @@ Route::controller(SessionController::class)->group(function () {
     });
 });
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->only(['create', 'store']);
+
+Route::resource('admin/users', UserController::class)->except(['create', 'store', 'show']);
 
 Route::resource('admin/tourisms', AdminTourismController::class)->except('show')->middleware('auth');
 
-Route::resource('admin/requests', RequestTourismController::class)->except(['create', 'store'])->middleware('auth');
+Route::resource('admin/requestTourisms', RequestTourismController::class)->except(['create', 'store', 'edit'])->middleware('auth');

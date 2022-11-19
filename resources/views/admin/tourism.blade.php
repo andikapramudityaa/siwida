@@ -3,6 +3,20 @@
 @section('body')
     <x-success-alert />
 
+    <div class="d-flex justify-content-center">
+        <div class="col-sm-6 mb-3">
+            <form action="/admin/tourisms">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari Wisata..." name="search"
+                        value="{{ request('search') }}">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <h5 class="mb-3">Kelola Wisata</h5>
 
     <a href="/admin/tourisms/create" class="btn btn-success">
@@ -11,7 +25,7 @@
     </a>
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="/admin/requests" class="btn btn-success position-relative">
+        <a href="/admin/requestTourisms" class="btn btn-success position-relative">
             <i class="fa-solid fa-envelope me-2"></i>
             Permintaan Wisata
             @if ($requestTourisms->count())
@@ -22,7 +36,7 @@
         </a>
     </div>
 
-    <div class="card bg-white shadow-sm">
+    <div class="card bg-white shadow-sm mb-3">
         <div class="col">
             <div class="table-responsive-sm">
                 <table class="table table-borderless text-center">
@@ -68,5 +82,9 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        {{ $tourisms->links() }}
     </div>
 @endsection

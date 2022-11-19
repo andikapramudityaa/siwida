@@ -6,6 +6,7 @@ use App\Models\Village;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\RequestTourism;
+use Illuminate\Support\Facades\Storage;
 
 class RequestTourismController extends Controller
 {
@@ -18,7 +19,7 @@ class RequestTourismController extends Controller
     {
         return view('admin.tourism.request', [
             'pageTitle' => 'Permintaan Wisata',
-            'requestTourisms' => RequestTourism::all()
+            'requestTourisms' => RequestTourism::latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -83,7 +84,10 @@ class RequestTourismController extends Controller
      */
     public function show(RequestTourism $requestTourism)
     {
-        //
+        return view('admin.tourism.request.read', [
+            'pageTitle' => 'Baca Permintaan',
+            'requestTourism' => $requestTourism
+        ]);
     }
 
     /**
@@ -117,6 +121,10 @@ class RequestTourismController extends Controller
      */
     public function destroy(RequestTourism $requestTourism)
     {
-        //
+        Storage::delete($requestTourism->image);
+
+        RequestTourism::destroy($requestTourism->id);
+
+        return redirect('/admin/requests')->with('success', 'Permintaan Berhasil Dihapus');
     }
 }

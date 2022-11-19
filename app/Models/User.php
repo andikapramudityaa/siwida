@@ -24,6 +24,11 @@ class User extends Authenticatable
         return $this->hasMany(RequestTourism::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

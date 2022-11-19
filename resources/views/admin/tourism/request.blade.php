@@ -3,19 +3,39 @@
 @section('body')
     <x-success-alert />
 
-    <h5 class="mb-3">Permintaan Wisata</h5>
+    <div class="d-flex justify-content-center">
+        <div class="col-sm-6 mb-3">
+            <form action="/admin/requestTourisms">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari Permintaan..." name="search"
+                        value="{{ request('search') }}">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div class="card bg-white shadow-sm">
+    <h5 class="mb-3">
+        <small>
+            <a href="{{ url()->previous() }}" class="text-decoration-none text-success">
+                <i class="fa-solid fa-circle-chevron-left me-2"></i>
+            </a>
+        </small>
+        Permintaan Wisata
+    </h5>
+
+    <div class="card bg-white shadow-sm mb-3">
         <div class="col">
             <div class="table-responsive-sm">
                 <table class="table table-borderless text-center">
                     <thead>
                         <tr>
+                            <th scope="col">Pengirim</th>
+                            <th scope="col">Nomor Telepon</th>
                             <th scope="col">Desa</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Hari Operasional</th>
-                            <th scope="col">Jam Operasional</th>
-                            <th scope="col">Harga Masuk</th>
                             <th scope="col">Jenis</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -23,22 +43,17 @@
                     <tbody>
                         @foreach ($requestTourisms as $requestTourism)
                             <tr>
+                                <td>{{ $requestTourism->user->name }}</td>
+                                <td>{{ $requestTourism->user->phoneNumber }}</td>
                                 <td>{{ $requestTourism->village->name }}</td>
                                 <td>{{ $requestTourism->name }}</td>
-                                <td>{{ $requestTourism->daysOpen }}</td>
-                                <td>{{ $requestTourism->hoursOpen }}</td>
-                                <td>{{ $requestTourism->fee }}</td>
                                 <td>{{ $requestTourism->type }}</td>
                                 <td class="text-nowrap">
-                                    <a href="/tourisms/{{ $requestTourism->slug }}"
+                                    <a href="/admin/requestTourisms/{{ $requestTourism->slug }}"
                                         class="badge bg-success border-0 text-decoration-none me-2">
                                         <span class="fa-solid fa-eye text-white"></span>
                                     </a>
-                                    <a href="/admin/tourisms/{{ $requestTourism->slug }}/edit"
-                                        class="badge bg-warning border-0 text-decoration-none me-2">
-                                        <span class="fa-solid fa-edit text-white"></span>
-                                    </a>
-                                    <form action="/admin/tourisms/{{ $requestTourism->slug }}" method="POST"
+                                    <form action="/admin/requestTourisms/{{ $requestTourism->slug }}" method="POST"
                                         class="d-inline">
                                         @method('delete')
                                         @csrf
@@ -54,5 +69,9 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        {{ $requestTourisms->links() }}
     </div>
 @endsection

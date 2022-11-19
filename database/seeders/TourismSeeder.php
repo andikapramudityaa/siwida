@@ -53,5 +53,57 @@ class TourismSeeder extends Seeder
             'lat' => 1233123,
             'lng' => 32133.1
         ]);
+
+        Tourism::create([
+            'name' => 'Testing4',
+            'village_id' => 1,
+            'slug' => 'Testing4',
+            'image' => '',
+            'daysOpen' => 'Senin s/d Minggu',
+            'hoursOpen' => '08.00 s/d 15.00',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
+            'lat' => 1233123,
+            'lng' => 32133.1
+        ]);
+
+        Tourism::create([
+            'name' => 'Testing5',
+            'village_id' => 1,
+            'slug' => 'Testing5',
+            'image' => '',
+            'daysOpen' => 'Senin s/d Minggu',
+            'hoursOpen' => '08.00 s/d 15.00',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
+            'lat' => 1233123,
+            'lng' => 32133.1
+        ]);
+
+        Tourism::create([
+            'name' => 'Testing6',
+            'village_id' => 1,
+            'slug' => 'Testing6',
+            'image' => '',
+            'daysOpen' => 'Senin s/d Minggu',
+            'hoursOpen' => '08.00 s/d 15.00',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
+            'lat' => 1233123,
+            'lng' => 32133.1
+        ]);
+
+        Tourism::create([
+            'name' => 'Testing7',
+            'village_id' => 1,
+            'slug' => 'Testing7',
+            'image' => '',
+            'daysOpen' => 'Senin s/d Minggu',
+            'hoursOpen' => '08.00 s/d 15.00',
+            'fee' => '15.000',
+            'facility' => 'Mushola & Rest Area',
+            'lat' => 1233123,
+            'lng' => 32133.1
+        ]);
     }
 }

@@ -3,9 +3,9 @@
 @section('body')
     <div class="d-flex justify-content-center">
         <div class="col-sm-6 mb-3">
-            <form action="/articles">
+            <form action="/">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari Wisata.." name="search"
+                    <input type="text" class="form-control" placeholder="Cari Wisata..." name="search"
                         value="{{ request('search') }}">
                     <button class="btn btn-success" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="mb-3">
-        <a href="/requests/create" class="text-decoration-none text-success">
+        <a href="/requestTourisms/create" class="text-decoration-none text-success">
             <small>
                 <i class="fa-solid fa-circle-plus me-2"></i>
             </small>
@@ -68,6 +68,10 @@
             </div>
         </div>
     @endforeach
+
+    <div class="d-flex justify-content-center">
+        {{ $tourisms->links() }}
+    </div>
 
     <div class="mb-3">
         <div class="fw-bold">

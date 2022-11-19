@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('body')
+    <x-success-alert />
+
     <div class="d-flex justify-content-center">
         <div class="col-lg-6">
             <h5>
@@ -21,7 +23,7 @@
             </small>
 
             <div class="container mb-3 card bg-white shadow-sm">
-                <form action="/requests" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
+                <form action="/requestTourisms" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
                     @csrf
                     <div class="col-sm-6">
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
