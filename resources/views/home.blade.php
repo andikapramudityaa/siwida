@@ -55,14 +55,25 @@
                         <h5 class="card-title">
                             {{ $tourism->name }}
                         </h5>
-                        <small>
-                            <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
-                                Detail Wisata
-                                <small>
-                                    <i class="fa-solid fa-angles-right"></i>
-                                </small>
-                            </a>
-                        </small>
+                        <p class="card-text">
+                            <small>
+                                <i class="fa-solid fa-location-dot text-success me-2"></i>
+                                Desa {{ $tourism->village->name }}
+                                &nbsp;
+                                <i class="fa-regular fa-calendar-days text-success me-2"></i>
+                                {{ $tourism->daysOpen }}
+                                &nbsp;
+                                <i class="fa-solid fa-clock text-success me-2"></i>
+                                {{ $tourism->hoursOpen }}
+                                <br>
+                                <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
+                                    Detail Wisata
+                                    <small>
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </small>
+                                </a>
+                            </small>
+                        </p>
                     </div>
                 </div>
             </div>

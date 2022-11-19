@@ -5,7 +5,7 @@
         <div class="col-lg-6">
             <h5 class="mb-3">
                 <small>
-                    <a href="{{ url()->previous() }}" class="text-decoration-none">
+                    <a href="/admin/users" class="text-decoration-none">
                         <i class="fa-solid fa-circle-chevron-left text-success"></i>
                     </a>
                 </small>

@@ -1,5 +1,17 @@
 @extends('layouts.main')
 
+@section('pageCSS')
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.umd.min.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+@endsection
+
 @section('body')
     <x-success-alert />
 
@@ -7,24 +19,29 @@
         <div class="col-lg-6">
             <h5>
                 <small>
-                    <a href="{{ url()->previous() }}" class="text-decoration-none">
+                    <a href="/" class="text-decoration-none">
                         <i class="fa-solid fa-circle-chevron-left text-success"></i>
                     </a>
                 </small>
                 &nbsp; Permintaan Wisata
             </h5>
 
-            <small class="text-danger">
-                *Permintaan yang tidak sesuai tidak akan diterima.
-                &nbsp;
-                <a href="" class="text-success text-decoration-none">
-                    <i class="fa-solid fa-circle-question"></i>
-                </a>
+            <small class="text-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Permintaan yang tidak sesuai tidak akan diterima.
             </small>
 
             <div class="container mb-3 card bg-white shadow-sm">
                 <form action="/requestTourisms" method="POST" class="mt-3 mb-3" enctype="multipart/form-data">
                     @csrf
+                    <div class="col-sm-6">
+                        <select class="form-select mb-3" name="type" id="type" aria-label="Jenis Permintaan"
+                            autofocus required>
+                            <option value="1">Permintaan Tambah Wisata</option>
+                            <option value="2">Permintaan Ubah Wisata</option>
+                        </select>
+                    </div>
+
                     <div class="col-sm-6">
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
                             autofocus required>
@@ -43,7 +60,10 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">
                             Upload Gambar &nbsp;
-                            <small class="text-danger d-inline">*Maksimal 1MB</small>
+                            <small class="text-warning d-inline">
+                                <i class="fa-solid fa-circle-exclamation text-warning"></i>
+                                Maksimal 1MB
+                            </small>
                         </label>
                         <input class="form-control @error('image') is-invalid @enderror " type="file" id="image"
                             name="image" required onchange="previewImage()">
@@ -77,38 +97,33 @@
                         <x-form-error-message id="facility" />
                     </div>
 
-                    <div class="col-sm-6">
-                        <select class="form-select mb-3" name="type" id="type" aria-label="Jenis Permintaan"
-                            autofocus required>
-                            <option value="1">Tambah Wisata</option>
-                            <option value="2">Ubah Wisata</option>
-                        </select>
-                    </div>
-
                     <div class="mb-3">
-                        <input type="number" step="any" class="form-control @error('lat') is-invalid @enderror"
-                            name="lat" id="lat" placeholder="Koordinat (Latitude)" value="{{ old('lat') }}"
-                            required>
-                        <x-form-error-message id="lat" />
+                        <label for="desc" class="form-label">
+                            Keterangan
+                        </label>
+                        @error('desc')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                        <input id="desc" type="hidden" name="desc">
+                        <trix-editor input="desc"></trix-editor>
                     </div>
 
-                    <div class="mb-3">
-                        <input type="number" step="any" class="form-control @error('lng') is-invalid @enderror"
-                            name="lng" id="lng" placeholder="Koordinat (Longitude)" value="{{ old('lng') }}"
-                            required>
-                        <x-form-error-message id="lng" />
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success me-4">
+                            <i class="fa-solid fa-plus me-2"></i>
+                            Tambah
+                        </button>
                     </div>
-
-                    <button type="submit" class="btn btn-success me-4">
-                        <i class="fa-solid fa-plus me-2"></i>
-                        Tambah
-                    </button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault()
+        })
+
         function previewImage() {
             const image = document.querySelector('#image');
             const imgPreview = document.querySelector('.img-preview');

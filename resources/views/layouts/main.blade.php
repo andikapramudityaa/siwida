@@ -46,7 +46,8 @@
                     @csrf
                     <button class="border-0 btn nav-link" type="submit"
                         onclick="return confirm('Apa anda yakin untuk Logout?')">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user text-success me-2"></i>
+                        {{ auth()->user()->name }}
                     </button>
                 </form>
             @endauth

@@ -5,7 +5,7 @@
         <div class="col-lg-6">
             <h5 class="mb-3">
                 <small>
-                    <a href="{{ url()->previous() }}" class="text-decoration-none">
+                    <a href="/admin/tourisms" class="text-decoration-none">
                         <i class="fa-solid fa-circle-chevron-left text-success"></i>
                     </a>
                 </small>
@@ -20,7 +20,10 @@
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
                             autofocus required>
                             @foreach ($villages as $village)
-                                <option value="{{ $village->id }}">Desa {{ $village->name }}</option>
+                                <option value="{{ $village->id }}"
+                                    {{ $tourism->village->id === $village->id ? 'selected' : '' }}>
+                                    Desa {{ $village->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

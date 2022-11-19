@@ -19,7 +19,8 @@ class RequestTourismController extends Controller
     {
         return view('admin.tourism.request', [
             'pageTitle' => 'Permintaan Wisata',
-            'requestTourisms' => RequestTourism::latest()->filter(request(['search']))->paginate(5)->withQueryString()
+            'requestTourisms' => RequestTourism::with('village', 'user')->latest()
+                ->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -55,8 +56,7 @@ class RequestTourismController extends Controller
             'hoursOpen' => 'required|max:255',
             'fee' => 'required',
             'facility' => 'required|max:255',
-            'lat' => 'required',
-            'lng' => 'required',
+            'desc' => 'required',
             'image' => 'image|file|max:1024',
             'type' => 'required'
         ]);
@@ -86,31 +86,8 @@ class RequestTourismController extends Controller
     {
         return view('admin.tourism.request.read', [
             'pageTitle' => 'Baca Permintaan',
-            'requestTourism' => $requestTourism
+            'requestTourism' => $requestTourism->load('village', 'user')
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\RequestTourism  $requestTourism
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RequestTourism $requestTourism)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RequestTourism  $requestTourism
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RequestTourism $requestTourism)
-    {
-        //
     }
 
     /**

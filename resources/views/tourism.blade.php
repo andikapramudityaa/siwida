@@ -9,7 +9,7 @@
         </small>
         {{ $tourism->name }} <br>
         <br>
-        {{ $village->name }} <br>
+        {{ $tourism->village->name }} <br>
         {{ $tourism->daysOpen }} <br>
         {{ $tourism->hoursOpen }} <br>
         {{ $tourism->fee }} <br>

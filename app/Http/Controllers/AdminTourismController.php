@@ -21,7 +21,7 @@ class AdminTourismController extends Controller
     {
         return view('admin.tourism', [
             'pageTitle' => 'Wisata',
-            'tourisms' => Tourism::latest()->filter(request(['search']))->paginate(5)->withQueryString(),
+            'tourisms' => Tourism::with('village')->latest()->filter(request(['search']))->paginate(5)->withQueryString(),
             'requestTourisms' => RequestTourism::all()
         ]);
     }
@@ -77,9 +77,8 @@ class AdminTourismController extends Controller
     {
         return view('admin.tourism.edit', [
             'pageTitle' => 'Tambah Wisata',
-            'tourism' => $tourism,
             'villages' => Village::all(),
-            'tourism_village' => $tourism->village
+            'tourism' => $tourism->load('village'),
         ]);
     }
 

@@ -24,23 +24,25 @@ use App\Models\RequestTourism;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('villages/{village}', [VillageController::class, 'getVillage']);
 Route::get('tourisms/{tourism}', [TourismController::class, 'getTourism']);
-
 Route::resource('requestTourisms', RequestTourismController::class)->only(['create', 'store']);
 
-Route::controller(SessionController::class)->group(function () {
-    Route::middleware('guest')->group(function () {
+Route::middleware('guest')->group(function () {
+    Route::controller(SessionController::class)->group(function () {
         Route::get('login', 'login');
         Route::post('validate', 'validateAccount');
     });
-    Route::middleware('auth')->group(function () {
-        Route::post('logout', 'logout');
-    });
 });
 
-Route::resource('users', UserController::class)->only(['create', 'store']);
+Route::middleware('auth')->group(function () {
+    Route::resource('users', UserController::class)->only(['create', 'store']);
+    Route::post('logout', [SessionController::class, 'logout']);
+});
 
-Route::resource('admin/users', UserController::class)->except(['create', 'store', 'show']);
-
-Route::resource('admin/tourisms', AdminTourismController::class)->except('show')->middleware('auth');
-
-Route::resource('admin/requestTourisms', RequestTourismController::class)->except(['create', 'store', 'edit'])->middleware('auth');
+Route::middleware('admin')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('tourisms', AdminTourismController::class)->except('show');
+        Route::resource('requestTourisms', RequestTourismController::class)->only(['index', 'show', 'destroy']);
+        Route::resource('users', UserController::class)->except(['create', 'store', 'show']);
+        Route::put('users/promote/{user}', [UserController::class, 'promote']);
+    });
+});

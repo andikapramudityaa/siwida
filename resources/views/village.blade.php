@@ -36,14 +36,24 @@
                             <h5 class="card-title">
                                 {{ $tourism->name }}
                             </h5>
-                            <small>
-                                <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
-                                    Detail Wisata
+                            <p class="card-text">
+                                <small>
                                     <small>
-                                        <i class="fa-solid fa-angles-right"></i>
+                                        <i class="fa-regular fa-calendar-days text-success me-2"></i>
+                                        {{ $tourism->daysOpen }}
+                                        &nbsp;
+                                        <i class="fa-solid fa-clock text-success me-2"></i>
+                                        {{ $tourism->hoursOpen }}
+                                        <br>
+                                        <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none text-success">
+                                            Detail Wisata
+                                            <small>
+                                                <i class="fa-solid fa-angles-right"></i>
+                                            </small>
+                                        </a>
                                     </small>
-                                </a>
-                            </small>
+                                </small>
+                            </p>
                         </div>
                     </div>
                 </div>

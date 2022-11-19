@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         return view('admin.user', [
             'pageTitle' => 'Akun',
-            'users' => User::all()
+            'users' => User::filter(request(['search']))->paginate(10)->withQueryString()
         ]);
     }
 
@@ -49,7 +49,7 @@ class UserController extends Controller
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['role'] = 'user';
+        $validatedData['isAdmin'] = 0;
         $validatedData['remember_token'] = Str::random(10);
 
         if ($request->phoneNumber) {
@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.account.edit', [
+        return view('admin.user.edit', [
             'pageTitle' => 'Perbarui Akun',
             'user' => $user
         ]);
@@ -92,6 +92,15 @@ class UserController extends Controller
         User::where('id', $user->id)->update($validatedData);
 
         return redirect('/admin/users/')->with('success', 'Akun Berhasil Diperbarui');
+    }
+
+    public function promote(User $user)
+    {
+        User::where('id', $user->id)->update([
+            'isAdmin' => 1
+        ]);
+
+        return redirect('/admin/users')->with('success', 'Akun Berhasil Dipromosikan');
     }
 
     /**

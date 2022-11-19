@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phoneNumber')->unique();
             $table->string('password');
-            $table->string('role');
+            $table->boolean('isAdmin');
             $table->rememberToken();
             $table->timestamps();
         });

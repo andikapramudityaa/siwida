@@ -10,8 +10,7 @@ class TourismController extends Controller
     {
         return view('tourism', [
             'pageTitle' => 'Wisata',
-            'tourism' => $tourism,
-            'village' => $tourism->village
+            'tourism' => $tourism->load('village')
         ]);
     }
 }

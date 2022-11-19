@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'name' => 'Admin Siwida',
             'phoneNumber' => '0251-642245',
             'password' => bcrypt('admin2022'),
-            'role' => 'admin',
+            'isAdmin' => 1,
             'remember_token' => Str::random(10),
         ];
     }
