@@ -19,7 +19,7 @@
 
     <h5 class="mb-3">
         <small>
-            <a href="{{ url()->previous() }}" class="text-decoration-none link-success">
+            <a href="/admin/tourisms" class="text-decoration-none link-success">
                 <i class="fa-solid fa-circle-chevron-left me-2"></i>
             </a>
         </small>

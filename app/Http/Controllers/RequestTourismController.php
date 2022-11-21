@@ -101,6 +101,6 @@ class RequestTourismController extends Controller
 
         RequestTourism::destroy($requestTourism->id);
 
-        return redirect('/admin/requests')->with('success', 'Permintaan Berhasil Dihapus');
+        return redirect('/admin/requestTourisms')->with('success', 'Permintaan Berhasil Dihapus');
     }
 }

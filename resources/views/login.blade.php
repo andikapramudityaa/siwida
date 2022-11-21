@@ -1,15 +1,6 @@
 @extends('layouts.main')
 
 @section('body')
-    <x-success-alert />
-
-    @if (session()->has('loginError'))
-        <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-            <i class="fa-solid fa-circle-xmark me-2"></i> {{ session('loginError') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -22,6 +13,15 @@
             </li>
         </ol>
     </nav>
+
+    <x-success-alert />
+
+    @if (session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+            <i class="fa-solid fa-circle-xmark me-2"></i> {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <h5 class="text-center fs-4 text-uppercase mt-5">Login Akun</h5>
     <p class="text-center text-muted mb-3">Masukan identitas anda untuk melanjutkan</p>

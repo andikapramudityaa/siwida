@@ -37,7 +37,7 @@
     <nav class="navbar bg-white navbar-expand-md shadow-sm mb-3">
         <div class="container">
 
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/admin/tourisms">
                 <img src="{{ asset('images/logo-kabupaten.png') }}" alt="Siwida" height="30" width="28">
             </a>
 

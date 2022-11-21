@@ -20,6 +20,11 @@
     <h5 class="mb-3">Kelola Akun</h5>
 
     @if ($users->count())
+        <h5>
+            <small>
+                Admin
+            </small>
+        </h5>
         <div class="card bg-white shadow-sm mb-3">
             <div class="col">
                 <div class="table-responsive-sm">
@@ -63,6 +68,11 @@
             </div>
         </div>
 
+        <h5>
+            <small>
+                Pengguna
+            </small>
+        </h5>
         <div class="card bg-white shadow-sm">
             <div class="col">
                 <div class="table-responsive-sm">
