@@ -51,7 +51,7 @@ class RequestTourismController extends Controller
     {
         $validatedData = $request->validate([
             'village_id' => 'required',
-            'name' => 'required|unique:request_tourisms|max:255',
+            'name' => 'required|max:255',
             'daysOpen' => 'required|max:255',
             'hoursOpen' => 'required|max:255',
             'fee' => 'required',
@@ -68,7 +68,6 @@ class RequestTourismController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['slug'] = Str::replace(' ', '-', $validatedData['name']);
         $validatedData['image'] = $request->file('image')->store('req-tourism-img');
 
         RequestTourism::create($validatedData);

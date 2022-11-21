@@ -84,10 +84,12 @@
                         <x-form-error-message id="lng" />
                     </div>
 
-                    <button type="submit" class="btn btn-success me-4">
-                        <i class="fa-solid fa-plus me-2"></i>
-                        Tambah
-                    </button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success me-4">
+                            <i class="fa-solid fa-plus me-2"></i>
+                            Tambah
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

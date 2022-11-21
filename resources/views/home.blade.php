@@ -25,7 +25,7 @@
                 @foreach ($villages as $village)
                     <li>
                         <a href="/villages/{{ $village->slug }}" class="dropdown-item" type="button">
-                            <i class="fa-solid fa-location-dot me-2"></i>
+                            <i class="fa-solid fa-location-dot fa-fw me-2"></i>
                             {{ $village->name }}
                         </a>
                     </li>
@@ -58,13 +58,13 @@
                             </h5>
                             <p class="card-text">
                                 <small>
-                                    <i class="fa-solid fa-location-dot text-success me-2"></i>
+                                    <i class="fa-solid fa-location-dot fa-fw text-success me-2"></i>
                                     Desa {{ $tourism->village->name }}
-                                    <br>
-                                    <i class="fa-regular fa-calendar-days text-success me-2"></i>
+                                    &nbsp;
+                                    <i class="fa-regular fa-calendar-days fa-fw text-success me-2"></i>
                                     {{ $tourism->daysOpen }}
                                     &nbsp;
-                                    <i class="fa-solid fa-clock text-success me-2"></i>
+                                    <i class="fa-solid fa-clock fa-fw text-success me-2"></i>
                                     {{ $tourism->hoursOpen }}
                                     <br>
                                     <a href="/tourisms/{{ $tourism->slug }}" class="text-decoration-none link-success">

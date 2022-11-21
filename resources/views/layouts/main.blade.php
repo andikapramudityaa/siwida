@@ -52,7 +52,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="/login">
-                                <i class="fa-solid fa-right-to-bracket text-success"></i>
+                                <i class="fa-solid fa-right-to-bracket"></i>
                                 &nbsp; Login
                             </a>
                         </li>
@@ -66,14 +66,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fa-solid fa-circle-user text-success"></i>
+                                <i class="fa-solid fa-circle-user link-success"></i>
                                 &nbsp; <b>{{ auth()->user()->name }}</b>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 @if (auth()->user()->isAdmin)
                                     <li>
                                         <a class="dropdown-item" href="/admin/tourisms">
-                                            <i class="fa-solid fa-gauge text-success"></i>
+                                            <i class="fa-solid fa-gauge fa-fw"></i>
                                             &nbsp; Admin
                                         </a>
                                     </li>
@@ -82,7 +82,7 @@
                                     <form action="/logout" method="POST" class="mt-2 mb-2">
                                         @csrf
                                         <button class="dropdown-item" type="submit">
-                                            <i class="fa-solid fa-right-from-bracket text-success"></i>
+                                            <i class="fa-solid fa-right-from-bracket fa-fw"></i>
                                             &nbsp; Logout
                                         </button>
                                     </form>

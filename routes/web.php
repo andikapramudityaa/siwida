@@ -29,11 +29,11 @@ Route::middleware('guest')->group(function () {
     Route::controller(SessionController::class)->group(function () {
         Route::get('login', 'login');
         Route::post('validate', 'validateAccount');
+        Route::resource('users', UserController::class)->only(['create', 'store']);
     });
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('users', UserController::class)->only(['create', 'store']);
     Route::post('logout', [SessionController::class, 'logout']);
 });
 

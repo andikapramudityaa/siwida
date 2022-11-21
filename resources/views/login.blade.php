@@ -6,13 +6,14 @@
 
         @if (session()->has('loginError'))
             <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-                {{ session('loginError') }}
+                <i class="fa-solid fa-circle-xmark me-2"></i> {{ session('loginError') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
-        <h3 class="text-center fs-3 text-uppercase mt-5">Login Akun</h3>
-        <p class="text-center text-muted mb-4">Masukan identitas anda untuk melanjutkan</p>
+        <h5 class="text-center fs-4 text-uppercase mt-5">Login Akun</h5>
+        <p class="text-center text-muted mb-3">Masukan identitas anda untuk melanjutkan</p>
+
         <div class="col d-flex justify-content-center">
             <div class="col-lg-4">
                 <form action="/validate" method="POST">

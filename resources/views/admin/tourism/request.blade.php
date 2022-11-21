@@ -50,11 +50,11 @@
                                     <td>{{ $requestTourism->name }}</td>
                                     <td>{{ $requestTourism->type }}</td>
                                     <td class="text-nowrap">
-                                        <a href="/admin/requestTourisms/{{ $requestTourism->slug }}"
+                                        <a href="/admin/requestTourisms/{{ $requestTourism->id }}"
                                             class="badge bg-success border-0 text-decoration-none me-2">
                                             <span class="fa-solid fa-eye text-white"></span>
                                         </a>
-                                        <form action="/admin/requestTourisms/{{ $requestTourism->slug }}" method="POST"
+                                        <form action="/admin/requestTourisms/{{ $requestTourism->id }}" method="POST"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf

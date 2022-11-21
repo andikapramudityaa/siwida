@@ -1,5 +1,5 @@
 @error($id)
     <div class="invalid-feedback">
-        {{ $message }}
+        <i class="fa-solid fa-circle-xmark"></i> {{ $message }}
     </div>
 @enderror

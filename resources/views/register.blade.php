@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container mt-3 mb-3">
-        <h3 class="text-center fs-3 text-uppercase mt-5">Daftar Akun</h3>
+        <h5 class="text-center fs-4 text-uppercase mt-5">Daftar Akun</h5>
         <p class="text-center text-muted mb-3">Masukan identitas anda untuk mendaftar</p>
         <div class="col d-flex justify-content-center">
             <div class="col-lg-4">

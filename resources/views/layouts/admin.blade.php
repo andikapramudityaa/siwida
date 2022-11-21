@@ -51,7 +51,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item me-2">
-                            <a class="nav-link {{ $pageTitle === 'Wisata' ? 'text-success' : '' }}" href="/admin/tourisms">
+                            <a class="nav-link {{ $pageTitle === 'Wisata' || $pageTitle === 'Permintaan Wisata' ? 'text-success' : '' }}"
+                                href="/admin/tourisms">
                                 Wisata
                             </a>
                         </li>
@@ -63,13 +64,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fa-solid fa-circle-user text-success"></i>
+                                <i class="fa-solid fa-circle-user link-success"></i>
                                 &nbsp; <b>{{ auth()->user()->name }}</b>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="/">
-                                        <i class="fa-solid fa-earth-asia text-success"></i>
+                                        <i class="fa-solid fa-earth-asia fa-fw"></i>
                                         &nbsp; Website
                                     </a>
                                 </li>
@@ -77,7 +78,7 @@
                                     <form action="/logout" method="POST" class="mt-2 mb-2">
                                         @csrf
                                         <button class="dropdown-item" type="submit">
-                                            <i class="fa-solid fa-right-from-bracket text-success"></i>
+                                            <i class="fa-solid fa-right-from-bracket fa-fw"></i>
                                             &nbsp; Logout
                                         </button>
                                     </form>

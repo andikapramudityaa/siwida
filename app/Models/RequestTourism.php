@@ -27,9 +27,4 @@ class RequestTourism extends Model
     {
         return $this->belongsTo(Village::class);
     }
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }

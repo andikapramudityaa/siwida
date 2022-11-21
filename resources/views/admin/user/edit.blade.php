@@ -17,6 +17,9 @@
                     @method('put')
                     @csrf
                     <div class="mb-3">
+                        <label for="name" class="form-label">
+                            Nama Lengkap
+                        </label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             id="name" maxlength="25" placeholder="Nama Lengkap" required
                             value="{{ old('name', $user->name) }}">
@@ -24,6 +27,9 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">
+                            Nomor Telepon
+                        </label>
                         <input type="tel" pattern="^08[1-9][0-9]{7,10}$" minlength="10" maxlength="13"
                             name="phoneNumber" class="form-control @error('phoneNumber') is-invalid @enderror"
                             id="phoneNumber" placeholder="Nomor Telepon"
@@ -31,10 +37,12 @@
                         <x-form-error-message id="phoneNumber" />
                     </div>
 
-                    <button type="submit" class="btn btn-success me-4">
-                        <i class="fa-solid fa-edit me-2"></i>
-                        Ubah
-                    </button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success me-4">
+                            <i class="fa-solid fa-edit me-2"></i>
+                            Ubah
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

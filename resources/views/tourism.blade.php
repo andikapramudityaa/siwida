@@ -41,19 +41,19 @@
                         <h5>Informasi</h5>
                     </small>
                     <small class="card-text">
-                        <i class="fa-solid fa-location-dot text-success"></i>
+                        <i class="fa-solid fa-location-dot fa-fw text-success"></i>
                         &nbsp; Desa {{ $tourism->village->name }}
                         <br>
-                        <i class="fa-regular fa-calendar-days text-success"></i>
+                        <i class="fa-regular fa-calendar-days fa-fw text-success"></i>
                         &nbsp; {{ $tourism->daysOpen }}
                         <br>
-                        <i class="fa-solid fa-clock text-success"></i>
+                        <i class="fa-solid fa-clock fa-fw text-success"></i>
                         &nbsp; {{ $tourism->hoursOpen }}
                         <br>
-                        <i class="fa-solid fa-ticket text-success"></i>
+                        <i class="fa-solid fa-ticket fa-fw text-success"></i>
                         &nbsp; Rp.{{ $tourism->fee }}
                         <br>
-                        <i class="fa-solid fa-landmark text-success"></i>
+                        <i class="fa-solid fa-landmark fa-fw text-success"></i>
                         &nbsp; Fasilitas : {{ $tourism->facility }}
                     </small>
                 </div>
