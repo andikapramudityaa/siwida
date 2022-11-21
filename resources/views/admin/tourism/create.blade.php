@@ -6,7 +6,7 @@
             <h5 class="mb-3">
                 <small>
                     <a href="/admin/tourisms" class="text-decoration-none">
-                        <i class="fa-solid fa-circle-chevron-left text-success"></i>
+                        <i class="fa-solid fa-circle-chevron-left link-success"></i>
                     </a>
                 </small>
                 &nbsp; Tambah Wisata
@@ -18,7 +18,8 @@
                         <select class="form-select mb-3" name="village_id" id="village_id" aria-label="Select Village"
                             autofocus required>
                             @foreach ($villages as $village)
-                                <option value="{{ $village->id }}">Desa {{ $village->name }}</option>
+                                <option value="{{ $village->id }}">Desa {{ $village->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -32,7 +33,10 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">
                             Upload Gambar &nbsp;
-                            <small class="text-danger d-inline">*Maksimal 1MB</small>
+                            <small class="text-warning d-inline">
+                                <i class="fa-solid fa-circle-exclamation text-warning"></i>
+                                Maksimal 1MB
+                            </small>
                         </label>
                         <input class="form-control @error('image') is-invalid @enderror " type="file" id="image"
                             name="image" required onchange="previewImage()">

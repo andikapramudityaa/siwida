@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(VillageSeeder::class);
-        $this->call(TourismSeeder::class);
 
         User::factory(1)->create();
     }

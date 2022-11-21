@@ -56,7 +56,7 @@ class RequestTourismController extends Controller
             'hoursOpen' => 'required|max:255',
             'fee' => 'required',
             'facility' => 'required|max:255',
-            'desc' => 'required',
+            'desc' => 'required|max:255',
             'image' => 'image|file|max:1024',
             'type' => 'required'
         ]);

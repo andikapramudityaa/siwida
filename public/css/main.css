@@ -1,0 +1,19 @@
+body {
+    font-family: 'open-sans', sans-serif;
+}
+
+/* Override Dropdown Background When Clicked */
+.dropdown-item:active {
+    background-color: #198754;
+}
+
+/* Override Pagination Color */
+.active>.page-link,
+.page-link-active {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.page-link {
+    color: #198754;
+}

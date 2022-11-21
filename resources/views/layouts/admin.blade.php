@@ -17,50 +17,76 @@
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
     </script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    {{-- Main CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
     {{-- Font Awesome Kit --}}
     <script src="https://kit.fontawesome.com/cf6a86679c.js" crossorigin="anonymous"></script>
 
-    {{-- Separated CSS --}}
-    @yield('pageCSS')
+    @yield('head')
 </head>
 
 <body>
     <nav class="navbar bg-white navbar-expand-md shadow-sm mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/admin/tourisms">
-                <img src="{{ asset('images/logo-kabupaten.png') }}" width="28" height="30"
-                    class="d-inline-block align-text-top">
+
+            <a class="navbar-brand" href="/">
+                <img src="{{ asset('images/logo-kabupaten.png') }}" alt="Siwida" height="30" width="28">
             </a>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item me-2">
-                        <a class="nav-link {{ $pageTitle === 'Wisata' ? 'active' : '' }}" href="/admin/tourisms">
-                            Wisata
-                        </a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link {{ $pageTitle === 'Akun' ? 'active' : '' }}" href="/admin/users">
-                            Akun
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Website</a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <form action="/logout" method="POST" class="mt-2 mb-2">
-                            @csrf
-                            <button class="border-0 btn nav-link" type="submit"
-                                onclick="return confirm('Apa anda yakin untuk Logout?')">
-                                <i class="fa-solid fa-user"></i>
-                            </button>
-                        </form>
-                    </li> --}}
-                </ul>
-            </div>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="fa-solid fa-bars-staggered"></span>
+            </button>
+
+            @auth
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item me-2">
+                            <a class="nav-link {{ $pageTitle === 'Wisata' ? 'text-success' : '' }}" href="/admin/tourisms">
+                                Wisata
+                            </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link {{ $pageTitle === 'Akun' ? 'text-success' : '' }}" href="/admin/users">
+                                Akun
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-circle-user text-success"></i>
+                                &nbsp; <b>{{ auth()->user()->name }}</b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="/">
+                                        <i class="fa-solid fa-earth-asia text-success"></i>
+                                        &nbsp; Website
+                                    </a>
+                                </li>
+                                <li>
+                                    <form action="/logout" method="POST" class="mt-2 mb-2">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit">
+                                            <i class="fa-solid fa-right-from-bracket text-success"></i>
+                                            &nbsp; Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            @endauth
         </div>
     </nav>
 

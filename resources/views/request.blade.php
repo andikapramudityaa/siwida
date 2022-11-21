@@ -1,17 +1,5 @@
 @extends('layouts.main')
 
-@section('pageCSS')
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.css">
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.umd.min.js"></script>
-
-    <style>
-        trix-toolbar [data-trix-button-group="file-tools"] {
-            display: none;
-        }
-    </style>
-@endsection
-
 @section('body')
     <x-success-alert />
 
@@ -20,7 +8,7 @@
             <h5>
                 <small>
                     <a href="/" class="text-decoration-none">
-                        <i class="fa-solid fa-circle-chevron-left text-success"></i>
+                        <i class="fa-solid fa-circle-chevron-left link-success"></i>
                     </a>
                 </small>
                 &nbsp; Permintaan Wisata
@@ -98,14 +86,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="desc" class="form-label">
-                            Keterangan
-                        </label>
-                        @error('desc')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                        <input id="desc" type="hidden" name="desc">
-                        <trix-editor input="desc"></trix-editor>
+                        <input type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"
+                            id="desc" maxlength="255" placeholder="Keterangan" value="{{ old('desc') }}" required>
+                        <x-form-error-message id="desc" />
                     </div>
 
                     <div class="d-flex justify-content-center">

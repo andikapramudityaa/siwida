@@ -41,7 +41,7 @@
                             <small class="text-danger d-inline">*Maksimal 1MB</small>
                         </label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                            name="image" required onchange="previewImage()">
+                            name="image" onchange="previewImage()">
                         <input type="hidden" name="oldImage" value="{{ $tourism->image }}">
                         @if ($tourism->image)
                             <img src="{{ asset('storage/' . $tourism->image) }}"

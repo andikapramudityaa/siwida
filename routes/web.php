@@ -8,7 +8,6 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\TourismController;
 use App\Http\Controllers\UserController;
-use App\Models\RequestTourism;
 
 /*
 |--------------------------------------------------------------------------

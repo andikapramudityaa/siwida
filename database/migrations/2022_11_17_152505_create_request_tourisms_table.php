@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('fee');
             $table->string('facility');
             $table->string('type');
-            $table->text('desc');
+            $table->string('desc');
             $table->timestamps();
         });
     }
