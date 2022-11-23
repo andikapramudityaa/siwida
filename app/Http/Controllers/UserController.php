@@ -45,16 +45,13 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'username' => 'required|alpha_dash|unique:users,username|min:3|max:30',
             'name' => 'required|min:3|max:25',
-            'password' => 'required|min:6|max:30'
+            'password' => 'required|min:6|max:30',
+            'phoneNumber' => 'required|unique:users'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['isAdmin'] = 0;
         $validatedData['remember_token'] = Str::random(10);
-
-        if ($request->phoneNumber) {
-            $validatedData['phoneNumber'] = $request->phoneNumber;
-        }
 
         User::create($validatedData);
 
@@ -86,7 +83,7 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|min:3|max:25',
-            'phoneNumber' => 'required'
+            'phoneNumber' => 'required|unique:users'
         ]);
 
         User::where('id', $user->id)->update($validatedData);
