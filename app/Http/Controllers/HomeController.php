@@ -16,4 +16,13 @@ class HomeController extends Controller
             'tourisms' => Tourism::with('village')->latest()->filter(request(['search']))->paginate(5)->withQueryString()
         ]);
     }
+
+    public function getVillage(Village $village)
+    {
+        return view('home', [
+            'pageTitle' => 'Desa ' . $village->name,
+            'villages' => Village::all(),
+            'tourisms' => Tourism::where('village_id', $village->id)->latest()->filter(request(['search']))->paginate(5)->withQueryString()
+        ]);
+    }
 }

@@ -22,6 +22,15 @@
                 Desa
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a href="/" class="dropdown-item" type="button">
+                        <i class="fa-solid fa-earth-asia fa-fw me-2"></i>
+                        Semua Desa
+                    </a>
+                </li>
+                <li class="container">
+                    <hr class="dropdown-divider">
+                </li>
                 @foreach ($villages as $village)
                     <li>
                         <a href="/villages/{{ $village->slug }}" class="dropdown-item" type="button">

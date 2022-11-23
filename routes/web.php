@@ -20,8 +20,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('villages/{village}', [VillageController::class, 'getVillage']);
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('villages/{village}', 'getVillage');
+});
 Route::get('tourisms/{tourism}', [TourismController::class, 'getTourism']);
 Route::resource('requestTourisms', RequestTourismController::class)->only(['create', 'store']);
 
