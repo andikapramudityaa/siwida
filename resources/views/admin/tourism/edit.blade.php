@@ -38,7 +38,10 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">
                             Upload Gambar &nbsp;
-                            <small class="text-danger d-inline">*Maksimal 1MB</small>
+                            <small class="text-warning d-inline">
+                                <i class="fa-solid fa-circle-exclamation text-warning"></i>
+                                Maksimal 1MB
+                            </small>
                         </label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
                             name="image" onchange="previewImage()">
