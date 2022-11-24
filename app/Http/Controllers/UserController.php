@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -83,7 +84,10 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|min:3|max:25',
-            'phoneNumber' => 'required|unique:users'
+            'phoneNumber' => [
+                'required',
+                Rule::unique('users')->ignore($user->id) // Ignore this rule if phoneNumber doesn't change
+            ],
         ]);
 
         User::where('id', $user->id)->update($validatedData);
