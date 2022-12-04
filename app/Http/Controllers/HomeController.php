@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Tourism;
 use App\Models\Village;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

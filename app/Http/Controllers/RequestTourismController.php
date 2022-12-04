@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Village;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\RequestTourism;
 use Illuminate\Support\Facades\Storage;
