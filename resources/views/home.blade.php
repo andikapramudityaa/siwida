@@ -105,10 +105,10 @@
         <div class="fw-bold">
             Kontak Kami
         </div>
-        <i class="fa-solid fa-phone me-2"></i>
+        <i class="fa-solid fa-phone fa-fw me-2"></i>
         0251-642245
         <br>
-        <i class="fa-solid fa-envelope me-2"></i>
+        <i class="fa-solid fa-envelope fa-fw me-2"></i>
         kecleuwiliang@bogorkab.go.id
     </div>
 @endsection

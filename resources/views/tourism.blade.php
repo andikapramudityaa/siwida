@@ -105,6 +105,6 @@
             '<b>{{ $tourism->name }}</b> <br> <a href="https://maps.google.com/maps?q=' + gmapsQuery +
             '%20leuwiliang" class="text-decoration-none link-success">Buka di Google Maps</a>'
 
-        marker.bindPopup(popupContent);
+        marker.bindPopup(popupContent).openPopup();
     </script>
 @endsection
